@@ -1,4 +1,4 @@
-# Project Krabby Patty
+# Project Krusty Krab
 
 This is forked off of a private repo for a custom order service project I built for Lagniappefoods.com
 
