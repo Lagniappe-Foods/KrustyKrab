@@ -6,8 +6,6 @@ export async function sendOrderConfirmationEmail(
   email: string,
   orderItems: [OrderItem],
 ): Promise<void> {
-  // TODO: Talk with Dylan about putting order information in the email vs admin dashboard
-
   const customerMailOptions = {
     to: email,
     from: 'Lagniappe Foods',
@@ -23,8 +21,8 @@ export async function sendOrderConfirmationEmail(
   };
 
   const lagniappeMailOptions = {
-    to: 'charlie.dowd1996@gmail.com',
-    from: `"Order Service" <krustykrabtesting@gmail.com>`,
+    to: 'order@lagniappefoods.com',
+    from: 'Order Service',
     subject: 'New Customer Order Placed!',
     html: `<h2>View the new order in the admin dashboard if needed</h2>
           <h4>User: ${email}</h4>

@@ -6,6 +6,7 @@ export async function sendEmail(mailOptions: {
   from: string;
   subject: string;
   html: string;
+  cc?: string;
 }) {
   try {
     await NodeMailer.sendMail(mailOptions);
