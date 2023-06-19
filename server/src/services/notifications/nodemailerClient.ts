@@ -4,7 +4,8 @@ import nodemailer from 'nodemailer';
 
 // Create nodemailer client to use in different services
 const NodeMailer = nodemailer.createTransport({
-  service: 'gmail',
+  host: 'smtp.siteprotect.com',
+  port: 465,
   auth: {
     user: 'order@lagniappefoods.com',
     pass: `${process.env.EMAIL_PASSWORD}`,
