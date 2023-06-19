@@ -12,7 +12,7 @@ const DashboardBanner = () => {
     <BannerRoot>
       <Container>
         <RedSection>
-          <TagLine>A Little Something Extra</TagLine>
+          <TagLine>Seafood, With A Little Something Extra</TagLine>
           <RightSide>
             <BannerText>Email Billing Department</BannerText>
             <BannerText>
