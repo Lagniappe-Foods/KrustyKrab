@@ -8,7 +8,7 @@ export async function sendOrderConfirmationEmail(
 ): Promise<void> {
   const customerMailOptions = {
     to: email,
-    from: 'Lagniappe Foods',
+    from: 'order@lagniappefoods.com',
     subject: 'Your Order is Confirmed!',
     html: `<h2>Your order was placed successfully</h2>
           <h4>We will be processing this order as soon as possible. Keep in mind 
@@ -22,7 +22,7 @@ export async function sendOrderConfirmationEmail(
 
   const lagniappeMailOptions = {
     to: 'order@lagniappefoods.com',
-    from: 'Order Service',
+    from: 'order@lagniappefoods.com',
     subject: 'New Customer Order Placed!',
     html: `<h2>View the new order in the admin dashboard if needed</h2>
           <h4>User: ${email}</h4>

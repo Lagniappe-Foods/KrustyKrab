@@ -6,8 +6,8 @@ export async function sendResetPasswordEmail(
 ): Promise<void> {
   const mailOptions = {
     to: email,
-    from: 'Lagniappe Foods',
-    subject: 'Password Reset',
+    from: 'order@lagniappefoods.com',
+    subject: 'Reset your password',
     html: `<h2>Click the link below to reset your password</h2>
           <h4>This reset link will expire in 5 minutes from when you receive it.</h4>
           <button>

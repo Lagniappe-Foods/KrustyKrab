@@ -1,17 +1,17 @@
 import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
 
-// TODO: change this email and put in ENV variables. Explore sendgrid options
+dotenv.config();
 
 // Create nodemailer client to use in different services
 const NodeMailer = nodemailer.createTransport({
   host: 'smtp.siteprotect.com',
   port: 465,
+  secure: true,
+  debug: true,
   auth: {
     user: 'order@lagniappefoods.com',
-    pass: `${process.env.EMAIL_PASSWORD}`,
-  },
-  tls: {
-    rejectUnauthorized: false,
+    pass: process.env.EMAIL_PASSWORD,
   },
 });
 
