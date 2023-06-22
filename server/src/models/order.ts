@@ -13,6 +13,7 @@ export type OrderItem = {
 export interface IOrder {
   customer: ObjectId;
   orderItems: [OrderItem];
+  poNumber?: string;
 }
 
 export interface IOrderDocument extends IOrder, Document {}
@@ -31,6 +32,7 @@ const orderSchema = new Schema(
         quantity: { type: Number, required: true },
       },
     ],
+    PoNumber: { type: String, required: false },
   },
   { timestamps: true },
 );

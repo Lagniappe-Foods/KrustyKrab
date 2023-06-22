@@ -4,6 +4,7 @@ import { IOrder, Order } from '../../models';
 export async function createOrder({
   customer,
   orderItems,
+  poNumber,
 }: IOrder): Promise<IOrder> {
   // We dont necessarily need this check, but putting it here anyway
   if (orderItems?.length < 1) {
@@ -13,5 +14,5 @@ export async function createOrder({
     });
   }
 
-  return Order.create({ customer, orderItems });
+  return Order.create({ customer, orderItems, poNumber });
 }

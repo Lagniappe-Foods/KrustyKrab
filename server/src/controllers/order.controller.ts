@@ -10,12 +10,13 @@ async function createOrder(
 ) {
   const {
     user: { _id: customer, email },
-    body: { orderItems },
+    body: { orderItems, poNumber },
   } = req;
 
   const order = await OrderService.createOrder({
     customer, // userId
     orderItems,
+    poNumber,
   });
 
   // Send order confirmation email
