@@ -6,6 +6,7 @@ import DeadlineBanner from './DeadlineBanner';
 import PendingApprovalBanner from './PendingApprovalBanner/PendingApprovalBanner';
 import SubmitSection from './SubmitSection';
 import CurrentOrder from './CurrentOrder/CurrentOrder';
+import PoNumberSection from './PoNumberSection/PoNumberSection';
 
 const CurrentOrderPage: FunctionComponent = () => {
   const currentOrder = useAppSelector(selectCurrentOrder);
@@ -18,6 +19,8 @@ const CurrentOrderPage: FunctionComponent = () => {
         <Title className='mb-4'>Current Order</Title>
         <DeadlineBanner />
       </Header>
+
+      <PoNumberSection />
 
       <CurrentOrder currentOrder={currentOrder} />
 
