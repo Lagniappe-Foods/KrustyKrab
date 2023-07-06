@@ -1,15 +1,28 @@
-import { FunctionComponent, useRef, useState } from 'react';
+import { FunctionComponent, useRef } from 'react';
 import { PoInput, Root, Text } from './PoNumberSection.styled';
-import { BigButton } from '../../../../components/ProductRow/ProductRow.styled';
+import { AddToCartButton } from '../../../../components/ProductRow/ProductRow.styled';
+import { OrderItem } from '../../../../store/slices/api/templateApi.generated';
 
-const PoNumberSection: FunctionComponent = () => {
-  const [poNum, setPoNum] = useState(null);
-  const poRef = useRef<HTMLInputElement>();
+interface PoNumberSectionProps {
+  poNum: string;
+  setPo: (val: string) => void;
+  currentOrder: [OrderItem];
+}
+
+const PoNumberSection: FunctionComponent<PoNumberSectionProps> = ({
+  poNum,
+  setPo,
+  currentOrder,
+}) => {
+  const poNumberRef = useRef<HTMLInputElement>();
 
   const handlePoChange = () => {
-    console.log(poRef.current.value);
-    setPoNum(poRef.current.value);
+    setPo(poNumberRef.current.value);
   };
+
+  const emptyOrder = !currentOrder || currentOrder.length < 1;
+
+  if (emptyOrder) return;
 
   if (!poNum)
     return (
@@ -20,10 +33,10 @@ const PoNumberSection: FunctionComponent = () => {
           </Text>
         </div>
         <div>
-          <PoInput className='mr-2' ref={poRef} />
-          <BigButton onClick={handlePoChange} className='mx-2'>
+          <PoInput className='mr-2' ref={poNumberRef} />
+          <AddToCartButton onClick={handlePoChange} className='mx-2'>
             Add PO Number
-          </BigButton>
+          </AddToCartButton>
         </div>
       </Root>
     );
@@ -34,7 +47,9 @@ const PoNumberSection: FunctionComponent = () => {
         <Text>Attached PO Number: {poNum}</Text>
       </div>
       <div>
-        <BigButton onClick={() => setPoNum(null)}>Edit PO Number</BigButton>
+        <AddToCartButton onClick={() => setPo(null)}>
+          Edit PO Number
+        </AddToCartButton>
       </div>
     </Root>
   );

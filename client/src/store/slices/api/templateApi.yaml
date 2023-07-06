@@ -299,8 +299,13 @@ paths:
                   type: array
                   items:
                     $ref: '#/components/schemas/OrderItem'
+                poNumber:
+                  type: string
+                  x-stoplight:
+                    id: 61owkips1vr28
               required:
                 - orderItems
+        description: Body includes an array of orderItems and an optional poNumber
     get:
       summary: ''
       operationId: getOrders
@@ -493,6 +498,10 @@ components:
         updatedAt:
           type: string
           format: date-time
+        poNumber:
+          type: string
+          x-stoplight:
+            id: t5hza07ep7k8i
       required:
         - _id
         - customer

@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react';
+import { FunctionComponent, useState } from 'react';
 import { useAppSelector } from '../../../store/hooks';
 import { selectCurrentOrder } from '../../../store/slices/orderSlice';
 import { Root, Header, Title } from './CurrentOrderPage.styled';
@@ -9,6 +9,8 @@ import CurrentOrder from './CurrentOrder/CurrentOrder';
 import PoNumberSection from './PoNumberSection/PoNumberSection';
 
 const CurrentOrderPage: FunctionComponent = () => {
+  const [poNum, setPoNum] = useState<string>(null);
+
   const currentOrder = useAppSelector(selectCurrentOrder);
 
   return (
@@ -20,11 +22,15 @@ const CurrentOrderPage: FunctionComponent = () => {
         <DeadlineBanner />
       </Header>
 
-      <PoNumberSection />
+      <PoNumberSection
+        currentOrder={currentOrder}
+        poNum={poNum}
+        setPo={setPoNum}
+      />
 
       <CurrentOrder currentOrder={currentOrder} />
 
-      <SubmitSection currentOrder={currentOrder} />
+      <SubmitSection currentOrder={currentOrder} poNum={poNum} />
     </Root>
   );
 };

@@ -186,8 +186,10 @@ export type CreateOrderApiResponse = /** status 201 Created */ {
   order: Order;
 };
 export type CreateOrderApiArg = {
+  /** Body includes an array of orderItems and an optional poNumber */
   body: {
     orderItems: OrderItem[];
+    poNumber?: string;
   };
 };
 export type GetOrdersApiResponse = /** status 200 OK */ {
@@ -250,4 +252,5 @@ export type Order = {
   orderItems: OrderItem[];
   createdAt: string;
   updatedAt: string;
+  poNumber?: string;
 };

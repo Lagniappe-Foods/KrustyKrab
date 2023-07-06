@@ -13,10 +13,12 @@ import { FunctionComponent } from 'react';
 
 interface SubmitSectionProps {
   currentOrder: [OrderItem];
+  poNum: string | null;
 }
 
 const SubmitSection: FunctionComponent<SubmitSectionProps> = ({
   currentOrder,
+  poNum,
 }) => {
   const approved = isApproved();
 
@@ -41,7 +43,14 @@ const SubmitSection: FunctionComponent<SubmitSectionProps> = ({
             variant='danger'
             loading={isLoading}
             disabled={!approved}
-            onClick={() => submitOrder({ body: { orderItems: currentOrder } })}
+            onClick={() => {
+              submitOrder({
+                body: {
+                  orderItems: currentOrder,
+                  poNumber: poNum,
+                },
+              });
+            }}
           >
             Submit Order
           </SubmitButton>
