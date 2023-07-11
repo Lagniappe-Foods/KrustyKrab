@@ -5,6 +5,7 @@ import { templateApi, OrderItem } from './api/templateApi.generated';
 const orderSlice = createSlice({
   name: 'order',
   initialState: {
+    poNumber: null,
     currentOrder: [],
     orderHistory: [],
   },
@@ -24,6 +25,7 @@ const orderSlice = createSlice({
       });
       toast.success('Added to current order');
     },
+
     removeItem: (state, { payload }) => {
       const { product } = payload;
       state.currentOrder = state.currentOrder.filter(
@@ -31,8 +33,14 @@ const orderSlice = createSlice({
       );
       toast.success('Removed from current order');
     },
+
     clearOrder: (state) => {
       state.currentOrder = [];
+    },
+
+    setPoNumber: (state, { payload }) => {
+      const { poNumber } = payload;
+      state.poNumber = poNumber;
     },
   },
 
@@ -60,11 +68,13 @@ const orderSlice = createSlice({
   },
 });
 
+export const selectPoNumber = (state): string => state.order.poNumber;
+export const selectOrderHistory = (state) => state.order.orderHistory;
 export const selectCurrentOrder = (state): [OrderItem] =>
   state.order.currentOrder;
-export const selectOrderHistory = (state) => state.order.orderHistory;
 
 // Functions for executing actions on the order state
-export const { addItem, removeItem, clearOrder } = orderSlice.actions;
+export const { addItem, removeItem, clearOrder, setPoNumber } =
+  orderSlice.actions;
 
 export default orderSlice.reducer;

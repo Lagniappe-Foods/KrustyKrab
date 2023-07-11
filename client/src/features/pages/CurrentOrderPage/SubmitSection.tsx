@@ -1,6 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import { useCreateOrderMutation } from '../../../store/slices/api/templateApi';
-import { isApproved } from '../../../store/hooks';
+import {
+  isApproved,
+  useAppDispatch,
+  useAppSelector,
+} from '../../../store/hooks';
 import {
   SubmitButton,
   EmptyOrderDiv,
@@ -10,17 +14,19 @@ import {
 import EmptyOrderIcon from '../../../assets/empty-order-icon.svg';
 import { OrderItem } from '../../../store/slices/api/templateApi.generated';
 import { FunctionComponent } from 'react';
+import { selectPoNumber, setPoNumber } from '../../../store/slices/orderSlice';
 
 interface SubmitSectionProps {
   currentOrder: [OrderItem];
-  poNum: string | null;
 }
 
 const SubmitSection: FunctionComponent<SubmitSectionProps> = ({
   currentOrder,
-  poNum,
 }) => {
+  const dispatch = useAppDispatch();
+
   const approved = isApproved();
+  const poNumber = useAppSelector(selectPoNumber);
 
   const [submitOrder, { isLoading }] = useCreateOrderMutation();
 
@@ -47,9 +53,10 @@ const SubmitSection: FunctionComponent<SubmitSectionProps> = ({
               submitOrder({
                 body: {
                   orderItems: currentOrder,
-                  poNumber: poNum,
+                  poNumber,
                 },
               });
+              dispatch(setPoNumber({ poNumber: '' }));
             }}
           >
             Submit Order
