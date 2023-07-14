@@ -48,7 +48,7 @@ async function favoriteProduct(
 
   await UserService.favoriteProduct(user._id, product);
 
-  return res.status(200);
+  return res.status(200).json({ message: 'Added favorite successfully!' });
 }
 
 /**
@@ -63,7 +63,7 @@ async function unfavoriteProduct(
 
   await UserService.unfavoriteProduct(user._id, product);
 
-  return res.status(200);
+  return res.status(200).json({ message: 'Removed favorite successfully!' });
 }
 
 export default {
