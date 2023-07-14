@@ -8,6 +8,7 @@ export const Form = styled(BootstrapForm)`
   flex-direction: column;
   gap: 16px;
   margin-top: 60px;
+  max-width: 320px;
 `;
 
 export const Input = styled(Form.Control)`
