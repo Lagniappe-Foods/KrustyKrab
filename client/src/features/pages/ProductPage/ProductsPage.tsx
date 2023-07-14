@@ -135,7 +135,10 @@ const ProductsPage = () => {
         </ResponsiveTable>
       ) : (
         <EmptyProductsContainer>
-          <h3>
+          {selectedCategory === 'FAVORITES' && (
+            <h4>Add products to your favorites by clicking on the heart</h4>
+          )}
+          <h3 className='mt-5'>
             None of our products match this filter or category combination
           </h3>
         </EmptyProductsContainer>
