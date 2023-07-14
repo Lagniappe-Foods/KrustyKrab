@@ -1,9 +1,9 @@
-import { User, IProduct } from '../../models';
+import { User } from '../../models';
 
-export async function favoriteProduct(userId: string, product: IProduct) {
+export async function favoriteProduct(userId: string, productId: string) {
   try {
     // Update the user document using updateOne
-    await User.updateOne({ _id: userId }, { $push: { favorites: product } });
+    await User.updateOne({ _id: userId }, { $push: { favorites: productId } });
 
     console.log('Product added to favorites successfully!');
   } catch (error) {
