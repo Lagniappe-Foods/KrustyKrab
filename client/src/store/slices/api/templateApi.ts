@@ -33,6 +33,12 @@ const enhancedApi = api.enhanceEndpoints({
     createOrder: {
       invalidatesTags: [tags.orders],
     },
+    addFavorite: {
+      invalidatesTags: [tags.user],
+    },
+    removeFavorite: {
+      invalidatesTags: [tags.user],
+    },
   },
 });
 
@@ -75,4 +81,6 @@ export const {
   useCreateOrderMutation,
   useForgotPasswordMutation,
   useResetPasswordMutation,
+  useAddFavoriteMutation,
+  useRemoveFavoriteMutation,
 } = templateApi;

@@ -387,6 +387,46 @@ paths:
                 email:
                   type: string
                   format: email
+  /user/favorite:
+    post:
+      summary: ''
+      operationId: addFavorite
+      responses:
+        '200':
+          description: OK
+      description: Add product to a users favorties
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product:
+                  x-stoplight:
+                    id: 8cjwxkwqdhv3h
+                  type: string
+              required:
+                - product
+        description: The body has the product ID to be added to the users favorites array
+  /user/unfavorite:
+    post:
+      summary: ''
+      operationId: removeFavorite
+      responses:
+        '200':
+          description: OK
+      description: Remove product from a users favorites array
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product:
+                  x-stoplight:
+                    id: 7y5bc2sgqiynu
+                  type: string
+        description: The body contains the product ID that is to be removed from the users favorites
 components:
   schemas:
     User:
@@ -436,6 +476,15 @@ components:
           type: string
         phoneNumber:
           type: string
+        favorites:
+          x-stoplight:
+            id: wvbhgym02g72l
+          type: array
+          description: Array of product ObjectIds
+          items:
+            x-stoplight:
+              id: wys9uz0ugm69h
+            type: string
       required:
         - email
         - _id

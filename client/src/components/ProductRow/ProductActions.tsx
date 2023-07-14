@@ -1,6 +1,5 @@
 import { FunctionComponent, useRef } from 'react';
 import { toast } from 'react-toastify';
-import { useAppDispatch } from '../../store/hooks';
 import { addItem } from '../../store/slices/orderSlice';
 import FavoritedIcon from '../../assets/favorited-icon.svg';
 import NonFavoritedIcon from '../../assets/non-favorited-icon.svg';
@@ -13,6 +12,11 @@ import {
 } from './ProductRow.styled';
 import { addFavorite, removeFavorite } from '../../store/slices/productSlice';
 import { Product } from '../../store/slices/api/templateApi.generated';
+import {
+  useAddFavoriteMutation,
+  useRemoveFavoriteMutation,
+} from '../../store/slices/api/templateApi';
+import { useAppDispatch } from '../../store/hooks';
 
 interface ProductActionsProps {
   product: Product;
@@ -23,16 +27,23 @@ const ProductActions: FunctionComponent<ProductActionsProps> = ({
   product,
   favorite,
 }) => {
-  const quantityRef = useRef<HTMLInputElement>();
+  const [addFavoriteApi] = useAddFavoriteMutation();
+  const [removeFavoriteApi] = useRemoveFavoriteMutation();
+
   const dispatch = useAppDispatch();
 
-  const { _id, itemId } = product;
+  const quantityRef = useRef<HTMLInputElement>();
+
+  const { _id } = product;
 
   const toggleFavorite = () => {
-    // Change redux favorite state
-    if (!favorite) dispatch(addFavorite({ _id, itemId }));
-    else {
-      dispatch(removeFavorite({ _id, itemId }));
+    // Toggle favorite, API call and also update redux state
+    if (!favorite) {
+      addFavoriteApi({ body: { product: _id } });
+      dispatch(addFavorite(_id));
+    } else {
+      removeFavoriteApi({ body: { product: _id } });
+      dispatch(removeFavorite(_id));
     }
   };
 

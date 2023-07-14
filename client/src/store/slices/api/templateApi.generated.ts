@@ -103,6 +103,23 @@ const injectedRtkApi = api.injectEndpoints({
         body: queryArg.body,
       }),
     }),
+    addFavorite: build.mutation<AddFavoriteApiResponse, AddFavoriteApiArg>({
+      query: (queryArg) => ({
+        url: `/user/favorite`,
+        method: 'POST',
+        body: queryArg.body,
+      }),
+    }),
+    removeFavorite: build.mutation<
+      RemoveFavoriteApiResponse,
+      RemoveFavoriteApiArg
+    >({
+      query: (queryArg) => ({
+        url: `/user/unfavorite`,
+        method: 'POST',
+        body: queryArg.body,
+      }),
+    }),
   }),
   overrideExisting: false,
 });
@@ -216,6 +233,20 @@ export type ForgotPasswordApiArg = {
     email?: string;
   };
 };
+export type AddFavoriteApiResponse = unknown;
+export type AddFavoriteApiArg = {
+  /** The body has the product ID to be added to the users favorites array */
+  body: {
+    product: string;
+  };
+};
+export type RemoveFavoriteApiResponse = unknown;
+export type RemoveFavoriteApiArg = {
+  /** The body contains the product ID that is to be removed from the users favorites */
+  body: {
+    product?: string;
+  };
+};
 export type User = {
   email: string;
   password?: string;
@@ -227,6 +258,7 @@ export type User = {
   approved?: boolean;
   company?: string;
   phoneNumber?: string;
+  favorites?: string[];
 };
 export type Product = {
   _id: string;

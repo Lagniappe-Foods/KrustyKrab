@@ -22,14 +22,13 @@ import { useAppSelector } from '../../../store/hooks';
 import {
   selectAllProducts,
   selectFavorites,
-  Favorite,
 } from '../../../store/slices/productSlice';
 import MagnifyingGlass from '../../../assets/search-icon.svg';
 
 const ProductsPage = () => {
-  // Grab all products from our store
+  // Grab all products and favorites from our store
   const allProducts = useAppSelector<Product[]>(selectAllProducts);
-  const favorites = useAppSelector<Favorite[]>(selectFavorites);
+  const favorites = useAppSelector(selectFavorites);
 
   // state for selected category and current query
   const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
@@ -37,7 +36,7 @@ const ProductsPage = () => {
 
   // Helper function to determine if product is a favorite
   const isFavorite = (_id: string) => {
-    return favorites?.some((fav) => fav._id == _id);
+    return favorites?.some((fav) => fav == _id);
   };
 
   // Apply search query and category filters

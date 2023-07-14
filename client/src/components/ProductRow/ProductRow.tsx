@@ -18,7 +18,7 @@ const ProductRow: FunctionComponent<ProductRowProps> = ({ product }) => {
   const { itemId, description, casePack, caseWeight, _id } = product;
 
   const isFavorite = (_id: string) => {
-    return favorites?.some((favorite) => favorite._id === _id);
+    return favorites?.some((favorite) => favorite === _id);
   };
 
   return (
