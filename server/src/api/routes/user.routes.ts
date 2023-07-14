@@ -10,4 +10,8 @@ router.use(verifyJWT);
 
 router.get('/', tryCatch(UserController.getUser));
 
+router.post('/favorite', tryCatch(UserController.favoriteProduct));
+
+router.post('/unfavorite', tryCatch(UserController.unfavoriteProduct));
+
 export default router;

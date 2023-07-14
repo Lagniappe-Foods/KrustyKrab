@@ -36,7 +36,39 @@ async function createUser(req: AuthenticatedRequest<IUser>, res: Response) {
   return res.status(200).json({ message: 'User successfully created' });
 }
 
+/**
+ *
+ */
+async function favoriteProduct(
+  req: AuthenticatedRequest<IUser>,
+  res: Response,
+) {
+  const { user } = req;
+  const { product } = req.body;
+
+  await UserService.favoriteProduct(user._id, product);
+
+  return res.status(200);
+}
+
+/**
+ *
+ */
+async function unfavoriteProduct(
+  req: AuthenticatedRequest<IUser>,
+  res: Response,
+) {
+  const { user } = req;
+  const { product } = req.body;
+
+  await UserService.unfavoriteProduct(user._id, product);
+
+  return res.status(200);
+}
+
 export default {
   getUser,
   createUser,
+  favoriteProduct,
+  unfavoriteProduct,
 };

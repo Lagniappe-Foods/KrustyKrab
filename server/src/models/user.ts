@@ -1,4 +1,5 @@
 import { Schema, Document, model } from 'mongoose';
+import { IProduct } from './product';
 
 export interface IUser {
   email: string;
@@ -9,6 +10,7 @@ export interface IUser {
   approved?: boolean;
   company?: string;
   phoneNumber?: string;
+  favorites: [IProduct];
 }
 
 // Interface to hold normal properties as well as document properties ie _id, timestamps
@@ -24,6 +26,7 @@ const userSchema: Schema<IUserDocument> = new Schema(
     approved: { type: Boolean, default: false },
     company: { type: String, required: false },
     phoneNumber: { type: String, required: false },
+    favorites: [],
   },
   { timestamps: true },
 );
