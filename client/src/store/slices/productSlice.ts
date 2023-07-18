@@ -30,6 +30,13 @@ const productSlice = createSlice({
         state.products = payload.products;
       },
     );
+    // Load in favorites to redux state from user document on login
+    builder.addMatcher(
+      templateApi.endpoints.login.matchFulfilled,
+      (state, { payload }) => {
+        state.favorites = payload.user.favorites;
+      },
+    );
   },
 });
 
