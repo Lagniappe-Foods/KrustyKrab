@@ -4,6 +4,7 @@ import { sendEmail } from './sendEmail';
 
 export async function sendOrderConfirmationEmail(
   email: string,
+  company: string,
   orderItems: [OrderItem],
 ): Promise<void> {
   const customerMailOptions = {
@@ -26,6 +27,7 @@ export async function sendOrderConfirmationEmail(
     subject: 'New Customer Order Placed!',
     html: `<h2>View the new order in the admin dashboard if needed</h2>
           <h4>User: ${email}</h4>
+          <h4>Company: ${company}</h4>
           <h4>Order: </h4>
 
           <div>

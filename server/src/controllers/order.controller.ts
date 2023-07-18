@@ -9,7 +9,7 @@ async function createOrder(
   res: Response<{ order: IOrder }>,
 ) {
   const {
-    user: { _id: customer, email },
+    user: { _id: customer, email, company = 'N/A' },
     body: { orderItems, poNumber },
   } = req;
 
@@ -20,7 +20,11 @@ async function createOrder(
   });
 
   // Send order confirmation email
-  await NotificationService.sendOrderConfirmationEmail(email, orderItems);
+  await NotificationService.sendOrderConfirmationEmail(
+    email,
+    company,
+    orderItems,
+  );
 
   return res.status(201).json({ order });
 }

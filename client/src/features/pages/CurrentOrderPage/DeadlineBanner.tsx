@@ -16,7 +16,7 @@ const DeadlineBanner = () => {
         </div>
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <span>Order Deadline</span>
-          <DeadlineText>Wednesday, 10AM</DeadlineText>
+          <DeadlineText>Wednesday, 10 AM</DeadlineText>
         </div>
       </div>
       <div style={{ display: 'flex', gap: '5px' }}>
