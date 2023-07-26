@@ -13,8 +13,9 @@ export async function sendOrderConfirmationEmail(
     subject: 'Your Order is Confirmed!',
     html: `<h2>Your order was placed successfully</h2>
           <h4>We will be processing this order as soon as possible. Keep in mind 
-          orders are delivered on Wednesdays. Any orders placed after Tuesday at 
-          noon will be scheduled for the following Wednesday</h4>
+          orders are shipped on Wednesdays. Any orders placed after Wednesday at 
+          10am will be scheduled for the following Wednesday. Thank you for your business.
+          </h4>
    
             <a href=${process.env.BASE_URL}> 
               View all of your placed orders from your profile dashboard
