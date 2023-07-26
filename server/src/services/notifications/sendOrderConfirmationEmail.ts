@@ -32,7 +32,7 @@ export async function sendOrderConfirmationEmail(
           <h4>Order: </h4>
 
           <div>
-            <table style={{ textAlign: 'center' }}>
+            <table style="border-spacing: 35px 10px; text-align: center;">
               <thead>
                 <tr>
                   <th>Item ID</th>
@@ -41,14 +41,16 @@ export async function sendOrderConfirmationEmail(
                 </tr>
               </thead>
               <tbody>
-                ${orderItems.map(
-                  (orderItem) =>
-                    `<tr>
-                      <td>${orderItem.product.itemId}</td>
-                      <td>${orderItem.product.description}</td>
-                      <td>${orderItem.quantity}</td>
+                ${orderItems
+                  .map(
+                    (orderItem) =>
+                      `<tr>
+                      <td style="border: 2px solid black; padding: 10px;">${orderItem.product.itemId}</td>
+                      <td style="border: 2px solid black; padding: 10px;">${orderItem.product.description}</td>
+                      <td style="border: 2px solid black; padding: 10px;">${orderItem.quantity}</td>
                     </tr>`,
-                )}
+                  )
+                  .join('')}
               </tbody>
             </table
           </div>
