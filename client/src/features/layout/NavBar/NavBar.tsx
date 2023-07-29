@@ -14,6 +14,7 @@ import {
   Text,
   ContactDiv,
   RightSide,
+  PhoneImg,
 } from './NavBar.styled';
 
 const PrivateNav = () => {
@@ -47,7 +48,7 @@ const PrivateNav = () => {
 
         <RightSide>
           <ContactDiv>
-            <img src={PhoneIcon} height={16} />
+            <PhoneImg src={PhoneIcon} />
             <Text>973-674-0498</Text>
           </ContactDiv>
           <LogoutButton onClick={() => sendLogout()}>

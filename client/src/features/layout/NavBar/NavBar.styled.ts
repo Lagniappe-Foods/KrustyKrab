@@ -38,6 +38,9 @@ export const SignOutIcon = styled.img`
   height: 14px;
   width: auto;
   margin-right: 10px;
+  @media (min-width: 1200px) {
+    height: 18px;
+  }
 `;
 
 export const LogoutButton = styled.button`
@@ -55,6 +58,9 @@ export const Text = styled.span`
   font-weight: 500;
   font-size: 12px;
   color: white;
+  @media (min-width: 1200px) {
+    font-size: 16px;
+  }
 `;
 
 export const ContactDiv = styled.div`
@@ -72,5 +78,12 @@ export const RightSide = styled.div`
 
   @media (max-width: 768px) {
     display: none;
+  }
+`;
+
+export const PhoneImg = styled.img`
+  height: 16px;
+  @media (min-width: 1200px) {
+    height: 28px;
   }
 `;

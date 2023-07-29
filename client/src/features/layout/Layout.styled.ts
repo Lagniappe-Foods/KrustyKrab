@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { Container } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import BackgroundShells from '../../assets/stuffed-shells-bg.svg';
 
 export const Root = styled(Container)`
   min-height: 100vh;
