@@ -24,6 +24,7 @@ async function createOrder(
     email,
     company,
     orderItems,
+    poNumber,
   );
 
   return res.status(201).json({ order });
