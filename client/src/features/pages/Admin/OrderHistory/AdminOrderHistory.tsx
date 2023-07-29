@@ -1,23 +1,28 @@
 import DataTable from 'react-data-table-component';
-import OrderItemsColumn from './OrderItemsColumn';
 import { Root } from './AdminOrderHistory.styled';
 import { useAdminGetOrdersQuery } from '../../../../store/slices/api/templateApi';
+import ExpandedRow from './ExpandedRow';
 
 // TODO: Refactor based on conversation with Dylan. Add expandable row component + possible 'Processed' column
 const AdminOrderHistory = () => {
   const { data: orderData, isLoading } = useAdminGetOrdersQuery();
+
   const columns = [
     {
-      name: 'Customer',
+      name: 'Email',
       selector: (row) => row.customer.email,
+    },
+    {
+      name: 'Company',
+      selector: (row): string => row.customer.company || 'N/A',
     },
     {
       name: 'Date Created',
       selector: (row) => new Date(row.createdAt).toLocaleDateString('en-US'),
     },
     {
-      name: 'Order Items',
-      selector: (row) => <OrderItemsColumn orderItems={row.orderItems} />,
+      name: 'PO #',
+      selector: (row) => row.poNumber || 'N/A',
     },
   ];
   return (
@@ -27,7 +32,17 @@ const AdminOrderHistory = () => {
         <h3>...Loading</h3>
       ) : (
         <div className='mt-4' style={{ width: '100%' }}>
-          <DataTable columns={columns} data={orderData?.orders} />
+          <DataTable
+            title='Click on rows to show more data'
+            columns={columns}
+            data={orderData?.orders}
+            highlightOnHover
+            expandableRows
+            expandOnRowClicked
+            expandableRowsHideExpander
+            expandableRowsComponent={ExpandedRow}
+            dense
+          />
         </div>
       )}
     </Root>

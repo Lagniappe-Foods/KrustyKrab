@@ -7,14 +7,12 @@ const AdminDashboard = () => {
     <Root>
       <h1>Admin Dashboard</h1>
       <div className='mt-4'>
-        <div className='mt-4'>
-          <Link to='/admin/approve-accounts'>
-            <Button>Approve Accounts</Button>
-          </Link>
-          <Link to='/admin/orders'>
-            <Button>Order History</Button>
-          </Link>
-        </div>
+        <Link to='/admin/approve-accounts' className='m-4'>
+          <Button size='lg'>Approve Accounts</Button>
+        </Link>
+        <Link to='/admin/orders' className='m-4'>
+          <Button size='lg'>Order History</Button>
+        </Link>
       </div>
     </Root>
   );
