@@ -26,6 +26,7 @@ app.use(
       connectSrc: [
         'https://lagniappefoods.store',
         'https://lagniappe-orders-app.herokuapp.com',
+        'https://lagniappefoods-staging.herokuapp.com',
       ],
     },
   }),
