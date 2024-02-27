@@ -27,6 +27,7 @@ app.use(
         'https://lagniappefoods.store',
         'https://lagniappe-orders-app.herokuapp.com',
         'https://lagniappefoods-staging.herokuapp.com',
+        'https://lagniappefoods-staging-8bce3979534d.herokuapp.com',
       ],
     },
   }),
