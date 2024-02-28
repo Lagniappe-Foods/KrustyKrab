@@ -28,10 +28,13 @@ app.use(
         'https://lagniappe-orders-app.herokuapp.com',
         'https://lagniappefoods-staging.herokuapp.com',
         'https://lagniappefoods-staging-8bce3979534d.herokuapp.com',
+        'https://lagniappefoods-staging-8bce3979534d.herokuapp.com',
       ],
     },
   }),
 );
+
+console.log('BASE URL: ', process.env.BASE_URL);
 
 // https://stackoverflow.com/questions/63351799/react-fetch-credentials-include-breaks-my-entire-request-and-i-get-an-error
 app.use(
