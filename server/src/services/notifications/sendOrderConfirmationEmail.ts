@@ -10,7 +10,6 @@ export async function sendOrderConfirmationEmail(
 ): Promise<void> {
   const customerMailOptions = {
     to: email,
-    from: 'order@lagniappefoods.com',
     subject: 'Your Order is Confirmed!',
     html: `<h2>Your order was placed successfully</h2>
           <h4>We will be processing this order as soon as possible. Keep in mind 
@@ -33,15 +32,15 @@ export async function sendOrderConfirmationEmail(
               </thead>
               <tbody>
                 ${orderItems
-                  .map(
-                    (orderItem) =>
-                      `<tr>
+        .map(
+          (orderItem) =>
+            `<tr>
                       <td style="border: 2px solid black; padding: 10px;">${orderItem.product.itemId}</td>
                       <td style="border: 2px solid black; padding: 10px;">${orderItem.product.description}</td>
                       <td style="border: 2px solid black; padding: 10px;">${orderItem.quantity}</td>
                     </tr>`,
-                  )
-                  .join('')}
+        )
+        .join('')}
               </tbody>
             </table
           </div>
@@ -72,15 +71,15 @@ export async function sendOrderConfirmationEmail(
               </thead>
               <tbody>
                 ${orderItems
-                  .map(
-                    (orderItem) =>
-                      `<tr>
+        .map(
+          (orderItem) =>
+            `<tr>
                       <td style="border: 2px solid black; padding: 10px;">${orderItem.product.itemId}</td>
                       <td style="border: 2px solid black; padding: 10px;">${orderItem.product.description}</td>
                       <td style="border: 2px solid black; padding: 10px;">${orderItem.quantity}</td>
                     </tr>`,
-                  )
-                  .join('')}
+        )
+        .join('')}
               </tbody>
             </table
           </div>

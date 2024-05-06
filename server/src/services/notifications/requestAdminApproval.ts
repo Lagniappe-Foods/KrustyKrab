@@ -8,7 +8,6 @@ export async function requestAdminApproval(
   // Send email notifying admins a user has signed up and is requesting approval
   const mailOptions = {
     to: 'order@lagniappefoods.com',
-    from: 'order@lagniappefoods.com',
     subject: 'New user sign up - action required',
     html: `<h2>New user information: </h2>
           <h4>Email: ${email} \n
