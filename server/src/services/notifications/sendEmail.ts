@@ -11,7 +11,7 @@ export async function sendEmail(mailOptions: {
     // All emails will be from this company email
     const options = {
       ...mailOptions,
-      from: '"Lagniappe Foods Order" <order@lagniappefoods.com>',
+      from: '"Lagniappe Foods" <order@lagniappefoods.com>',
     };
     await NodeMailer.sendMail(options);
   } catch (error) {
