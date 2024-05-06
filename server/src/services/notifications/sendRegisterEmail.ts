@@ -5,8 +5,8 @@ export async function sendRegisterEmail(email: string, emailToken: string) {
   const mailOptions = {
     to: email,
     subject: 'Verify your email',
-    html: `<h2>Thanks for registering on our site </h2>
-          <h4>Please verify your email to continue...</h4>
+    html: `<h2>Thanks for registering</h2>
+          <h4>Please verify your email to continue</h4>
           <button>
             <a href=${process.env.BASE_URL}/verify-email?emailToken=${emailToken}>
               Verify Email
